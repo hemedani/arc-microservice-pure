@@ -1,10 +1,10 @@
 import { Infer, object, Describe } from "https://deno.land/x/lestruct/mod.ts";
-import { countryPure } from "../country/pure.ts";
+import { countryPureObj } from "../country/pure.ts";
 import {UserInRel as SharedUserInRel} from "../../shared/mod.ts";
 export const inRelUser = {
-  country: object(countryPure),
+  country: object(countryPureObj),
 };
 
-export const userInRel:Describe<UserInRel> = object(inRelUser) 
+export const userInRel:Describe<Partial<UserInRel>> = object(inRelUser) 
 
 export type UserInRel = Infer<typeof userInRel>;
