@@ -15,7 +15,7 @@ import {PureUser as SharedPureUser} from "../../shared/mod.ts"
 const level = enums(["Admin", "Editor", "Author", "Ghost", "Normal"]);
 const gender = enums(["Male", "Female"]);
 
-export const userPureObj = {
+export const pureUserObj = {
   name: string(),
   age: number(),
   lastName: string(),
@@ -28,6 +28,6 @@ export const userPureObj = {
   isActive: optional(boolean()),
   creditCardNumber: optional(number()),
 };
-export const pureUser:Describe<Partial<SharedPureUser>> = object(userPureObj);
+export const pureUser:Describe<Partial<SharedPureUser>> = object(pureUserObj);
 
 export type PureUser = Infer<typeof pureUser>;

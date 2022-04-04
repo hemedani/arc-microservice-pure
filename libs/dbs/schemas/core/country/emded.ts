@@ -1,10 +1,10 @@
 
 import { array, Infer, object,Describe } from "https://deno.land/x/lestruct/mod.ts";
-import { userPureObj } from "../user/pure.ts";
+import { pureUserObj } from "../user/pure.ts";
 import { CountryEmbedded as SharedCountryEmbedded } from "../../mod.ts";
 
 export const countryEmbeddedObj ={
- user: array(object(userPureObj)),
+ user: array(object(pureUserObj)),
 }
 export const countryEmbedded : Describe<Partial<SharedCountryEmbedded>> = object(countryEmbeddedObj);
 
