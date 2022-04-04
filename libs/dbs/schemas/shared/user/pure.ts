@@ -13,7 +13,7 @@ import {
 const level = enums(["Admin", "Editor", "Author", "Ghost", "Normal"]);
 const gender = enums(["Male", "Female"]);
 
-export const userPure = {
+export const userPureObj = {
   name: string(),
   age: number(),
   lastName: string(),
@@ -26,6 +26,6 @@ export const userPure = {
   isActive: optional(boolean()),
   creditCardNumber: optional(number()),
 };
-export const pureUser = object(userPure);
+export const pureUser = object(userPureObj);
 
 export type PureUser = Infer<typeof pureUser>;

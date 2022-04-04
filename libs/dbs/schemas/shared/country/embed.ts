@@ -1,8 +1,10 @@
 import { array, Infer, object } from "https://deno.land/x/lestruct/mod.ts";
-import { userPure } from "../user/mod.ts";
+import { userPureObj } from "../user/mod.ts";
 
-export const countryEmbedded = object({
-  user: array(object(userPure)),
-});
+export const countryEmbeddedObj ={
+  user: array(object(userPureObj)),
+};
+
+export const countryEmbedded = object(countryEmbeddedObj)
 
 export type CountryEmbedded = Infer<typeof countryEmbedded>;

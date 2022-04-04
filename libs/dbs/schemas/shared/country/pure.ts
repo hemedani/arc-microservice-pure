@@ -6,7 +6,7 @@ import {
   string,
 } from "https://deno.land/x/lestruct/mod.ts";
 
-export const countryPure = {
+export const countryPureObj = {
   name: string(),
   enName: string(),
   countryCode: array(string()),
@@ -15,6 +15,6 @@ export const countryPure = {
     coordinates: array(array(number())),
   }),
 }
-export const pureCountry = object(countryPure);
+export const pureCountry = object(countryPureObj);
 
 export type PureCountry = Infer<typeof pureCountry>;
