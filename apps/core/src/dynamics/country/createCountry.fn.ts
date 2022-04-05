@@ -2,7 +2,6 @@ import { countries, ICountry } from "../../schemas/mode.ts";
 import { Bson } from "../../utils/deps.ts";
 import {
   checkRoleFn,
-  checkValidation,
   emptyTokenError,
   isAuthFn,
   notFoundError,
@@ -10,7 +9,6 @@ import {
 import { Context } from "../mod.ts";
 import {
   InputCountry,
-  ICreateCountryDetails,
 } from "./createCountry.type.ts";
 import { getCountry } from "./sharedFunctions/getCountry.ts";
 import { country } from "../../../../../libs/dbs/schemas/core/country/mod.ts"
