@@ -9,13 +9,14 @@ import {
 } from "../../utils/mod.ts";
 import { Context } from "../mod.ts";
 import {
-  checkCreateCountry,
+  InputCountry,
   ICreateCountryDetails,
 } from "./createCountry.type.ts";
 import { getCountry } from "./sharedFunctions/getCountry.ts";
+import { country } from "../../../../../libs/dbs/schemas/core/country/mod.ts"
 
 type CreateCountryFn = (
-  details: ICreateCountryDetails,
+  details: InputCountry,
   context: Context,
 ) => Promise<Partial<ICountry>>;
 
@@ -34,19 +35,16 @@ export const createCountryFn: CreateCountryFn = async (details, context) => {
   /**if user was authenticated,check the user role */
   user ? await checkRoleFn(user, ["Admin", "Normal"]) : notFoundError("User");
   /** check whether the details(input) is right or not*/
-  checkValidation(checkCreateCountry, { details });
   const {
     set: { name, enName, geometries, countryCode },
     get,
   } = details;
-  //TODO: check the uniqueNess of country info
-  const createCountry = await countries.insertOne({
-    name: name,
-    enName: enName,
-    countryCode,
-    geometries: geometries
-      ? { type: "Polygon", coordinates: geometries }
-      : undefined,
+
+  const createCountry = await country.insertOne({
+   name,
+   enName,
+    geometries,
+    countryCode
   });
 
   return getCountry({ _id: new Bson.ObjectID(createCountry), get });
